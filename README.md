@@ -7,6 +7,7 @@ This project contains a machine learning model that predicts the number of recei
 3. [Installation](#installation)
 4. [Training the model](#training-the-model)
 5. [Testing the API](#testing-the-api)
+6. [Improvements](#improvements)
 
 ## Fast Setup
 You can setup this project quickly using Docker. To do this, 
@@ -64,3 +65,6 @@ python3 app.py
 - Open a new terminal
 python3 tester.py
 ```
+
+## Improvements
+This project could honestly have been done using regression rather than an entire neural network
