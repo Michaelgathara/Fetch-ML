@@ -1,0 +1,8 @@
+flask
+matplotlib
+pandas
+joblib
+torch
+torchvision
+torchaudio
+scikit-learn
