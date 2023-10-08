@@ -28,7 +28,31 @@ model.eval()
 @app.route('/predict', methods=['POST'])
 def predict():
     """
-    TODO: Add docs
+        Make a prediction based on the received data and return it as a JSON object.
+        
+        The function expects a JSON object in the request payload with a key 'month_value' that holds
+        the number of scanned receipts for a specific month. The value should be a float or integer.
+        The function performs the following steps:
+        
+        1. Parse the incoming JSON payload to extract the 'month_value'.
+        2. Normalize the 'month_value' using a pre-fitted MinMaxScaler.
+        3. Convert the normalized value to a PyTorch tensor.
+        4. Use the pre-trained PyTorch model to make a prediction.
+        5. Rescale the prediction back to the original value range.
+        6. Return the prediction as a JSON object with a key 'prediction'.
+        
+        If any error occurs during these steps, an error message is returned as a JSON object
+        with a key 'error'.
+        
+        Returns:
+        --------
+        JSON object: Either contains the prediction with key 'prediction' or an error message with key 'error'.
+        
+        Example:
+        --------
+        Request payload: {'month_value': 7500000}
+        Successful Response: {'prediction': 7491629.5}
+        Error Response: {'error': 'Some error message'}
     """
     try:
         data = request.get_json()
