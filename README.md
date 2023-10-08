@@ -15,7 +15,7 @@ You can setup this project quickly using Docker. To do this,
 3. Build and run the image
 ```sh
 docker build -t predictor .
-docker run -p 5000:5000 predictor
+docker run -p 8000:8000 predictor
 ```
 This will make the flask app accessible at `https://localhost:5000`
 Move to the [Testing the API](#testing-the-api) section
@@ -33,6 +33,11 @@ cd Fetch-ML
 ```
 
 2. Install the required packages:
+I recommend you create an environment prior to this, but it is not required
+```bash
+    python3 -m venv <what your env to be called>
+```
+
 ```sh
 pip install -r requirements.txt
 ```
@@ -45,8 +50,17 @@ pip install -r requirements.txt
 The training section of the model will output the trained model and a MinMaxScaler to the `app/models/` folder
 
 ## Testing the API
-You may use curl or Postman to test the model
-
+You may use CURL to send a request to the app
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"month_value": 7500000}' http://localhost:5000/predict
+cd app/
+python3 app.py
+- Open a new terminal
+curl -X POST -H "Content-Type: application/json" -d '{"month_value": 7500000}' http://localhost:8000/predict
+```
+You may also call the tester
+```sh
+cd app/
+python3 app.py
+- Open a new terminal
+python3 tester.py
 ```
