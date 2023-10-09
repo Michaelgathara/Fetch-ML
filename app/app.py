@@ -20,9 +20,9 @@ class FeedForwardNN(nn.Module):
         x = self.layer2(x)
         return x
 
-scaler = joblib.load('/models/scaler.pkl')
+scaler = joblib.load('models/scaler.pkl')
 model = FeedForwardNN(1, 10, 1)
-model.load_state_dict(torch.load('/models/predictor.pt'))
+model.load_state_dict(torch.load('models/predictor.pt'))
 model.eval()
 
 @app.route('/predict', methods=['POST'])
